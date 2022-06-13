@@ -45,6 +45,7 @@ class FunctionManager{
             clearTimeout(idleWorker.timer);  // stop the kill timer
             delete this.idleWorkers[idleWorkerPid];  // remove from idle
             worker = idleWorker.worker;
+            this.workers[worker.process.pid] = worker;
         } else {
             worker = cluster.fork();
         }
